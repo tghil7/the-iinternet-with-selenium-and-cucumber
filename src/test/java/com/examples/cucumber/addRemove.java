@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -15,7 +17,7 @@ import java.io.File;
 
 
 public class addRemove {
-    private WebDriver driver = new ChromeDriver();;
+    private WebDriver driver = new ChromeDriver();
     private String baseUrl = "https://the-internet.herokuapp.com/";;
     JavascriptExecutor js;
 
@@ -49,8 +51,9 @@ public class addRemove {
     }
 
     @Then("the {string} button disappears")
-    public void theButtonDisappears(String arg0) {
-      assertNull(driver.findElement(By.xpath("//*[@id=\"elements\"]/button")).getText(),null);
+    public void theButtonDisappears(String arg0) throws NoSuchElementException {
+        //Check for all the button elements that have "Delete" text and confirm the result is none, zero.
+      assertTrue((driver.findElements(By.xpath("//*[@id=\"elements\"]/button")).size() == 0));
     }
 
 

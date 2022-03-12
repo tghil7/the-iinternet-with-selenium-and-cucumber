@@ -21,11 +21,12 @@ public class MyStepdefs {
 
 
 
+
     @Given("the user navigates to  https:\\/\\/the-internet.herokuapp.com\\/")
     public void the_user_navigates_to_https_the_internet_herokuapp_com() {
         // Write code here that turns the phrase above into concrete actions
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anicet\\Desktop\\chromedriver.exe");
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         js = (JavascriptExecutor) driver;
         driver.get(baseUrl);
     }
